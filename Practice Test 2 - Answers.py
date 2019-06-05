@@ -79,6 +79,39 @@ class Point:
             newy = self.y + other.y
 
         return Point(newx, newy)
+ #Q16 Error in here but i felt like I was close which is super annoying 
+def evaluate_postfix_expression(expression):
+    postfix = my_stack_module.Stack()
+    for element in expression:
+        if type(element) == int:
+            postfix.push(element)
+        else:
+            if postfix.size() < 2 and type(element) != int:
+                return "Error: too few oprands!"
+            else:
+                v1 = postfix.pop()
+                v2 = postfix.pop()
+                if element == '+':
+                    postfix.push(v1 + v2)
+                elif element == '-':
+                    postfix.push(v2 - v1)
+                elif element == '*':
+                    postfix.push(v1 * v2)
+                elif element == '/':
+                    postfix.push(v2 / v1)
+                elif element == '^':
+                    postfix.push(v2**v1)
+
+    if postfix.size() == 1:
+        return postfix.pop()
+    else:
+        return "Error"
+            
+
+
+exp = ['2', '4', '*', '^']
+print(exp, evaluate_postfix_expression(exp))
+
           
   #Q17
   #n*log(n)
