@@ -41,7 +41,7 @@ def sum_neighbours(lit):
   #1
 
   #Q12-14 #Needs 15
-  class Point:
+class Point:
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
@@ -70,6 +70,15 @@ def sum_neighbours(lit):
             return True
         else:
             return False
+    def __add__(self, other):
+        if type(other) == int or type(other) == float:
+            newx = self.x + other
+            newy = self.y + other
+        else:
+            newx = self.x + other.x
+            newy = self.y + other.y
+
+        return Point(newx, newy)
           
   #Q17
   #n*log(n)
